@@ -1,0 +1,13 @@
+#app .wh_container {
+   max-width: 700px;
+}
+
+#app .wh_content_item {
+   height: 60px;
+   font-size: 17px;
+}
+
+#app .wh_item_date {
+   height: 50px;
+   width: 50px;
+}
