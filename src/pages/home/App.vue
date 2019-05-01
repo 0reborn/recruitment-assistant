@@ -29,8 +29,6 @@
 import Calendar from "vue-calendar-component"
 import "./styles/calendar.less"
 
-import $http from "@/utils/http"
-
 export default {
 
    data () {
@@ -84,7 +82,7 @@ export default {
 
       clickDay (dateString) {
 
-         $http.get('https://bird.ioliu.cn/joke/?type=text').then(res => {
+         this.$http.get('https://bird.ioliu.cn/joke/?type=text').then(res => {
             console.log(res.data)
          })
 
