@@ -2,6 +2,9 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
+
+   publicPath: './',
+
    pages: {
       index: {
          // page 的入口
@@ -16,6 +19,21 @@ module.exports = {
       },
    },
 
+   // devServer: {
+   //    proxy: {
+   //       '/api': {
+   //          target: 'https://cstdio.cn/yingpin',
+   //          changeOrigin: true,
+   //          pathRewrite: {
+   //             '^/api/login': '/login.php',
+   //             '^/api/register': '/register.php',
+   //             '^/api/verify': '/dysms/demo/sendSms.php',
+   //             '^/api/record/add': '/record.php'
+   //          }
+   //       }
+   //    }
+   // },
+
    // webpack配置
    configureWebpack: {
 
@@ -27,7 +45,9 @@ module.exports = {
 
             jQuery: "jquery",
 
-            "windows.jQuery": "jquery"
+            "windows.jQuery": "jquery",
+
+            Popper: ['popper.js', 'default']
 
          })
 

@@ -1,37 +1,57 @@
 {
    "2019-5-1": [
       {
-         "company": "完美世界",
-         "area": "京津冀地区",
-         "post": "游戏开发",
-         "description": "完美世界游戏开发岗位（PC端，移动端），笔试",
-         "startDate": "2019.4.30",
-         "endDate": "2019.5.4",
-         "startTime": "15:00",
-         "endTime": "16:30",
-         "tags": [
-            "游戏开发",
-            "笔试"
+         "company": "深信服",
+         "post": "产品经理",
+         "remainDayNum": 10,
+         "status": {
+            "name": "二面",
+            "date": "2018-08-05 18:00:00",
+            "method": "线下",
+            "address": "地址..."
+         },
+         "remark": "备注...",
+         "props": [
+            {
+               "key": "内推码",
+               "value": "xxx"
+            },
+            {
+               "key": "内推人",
+               "value": "xxx"
+            }
+         ],
+         "statusesFinished": [
+            "笔试",
+            "一面"
          ]
       },
-
       {
-         "company": "腾讯",
-         "area": "深圳",
-         "post": "产品运营",
-         "description": "腾讯产品运营岗位，网络在线面试",
-         "startDate": "2019.4.18",
-         "endDate": "2019.5.20",
-         "startTime": "19:00",
-         "endTime": "21:30",
-         "tags": [
-            "产品运营",
-            "视频面试"
+         "company": "深信服",
+         "post": "产品经理",
+         "remainDayNum": 10,
+         "status": {
+            "name": "二面",
+            "date": "2018-08-05 18:00:00",
+            "method": "线下"
+         },
+         "remark": "备注...",
+         "props": [
+            {
+               "key": "内推码",
+               "value": "xxx"
+            },
+            {
+               "key": "内推人",
+               "value": "xxx"
+            }
+         ],
+         "statusesFinished": [
+            "笔试",
+            "一面"
          ]
       }
    ],
-
    "2019-5-2": [],
-
    "2019-5-4": []
 }
