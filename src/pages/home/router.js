@@ -9,35 +9,41 @@ import UserCenter from './views/userCenter'
 Vue.use(Router)
 
 export default new Router({
-   linkActiveClass: 'linkActive',
-   routes: [
-      {
-         path: '/',
-         name: 'index',
-         redirect: 'home'
-      },
-      {
-         path: '/home',
-         name: 'home',
-         component: Main,
-         meta: {
-            requireAuth: true
-         }
-      },
-      {
-         path: '/introduce',
-         name: 'introduce',
-         component: Introduce
-      },
-      {
-         path: '/about',
-         name: 'about',
-         component: About
-      },
-      {
-         path: '/userCenter',
-         name: 'userCenter',
-         component: UserCenter
+  linkActiveClass: 'linkActive',
+  routes: [{
+      path: '/',
+      name: 'index',
+      redirect: 'home',
+      meta: {
+        requireAuth: true
       }
-   ]
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Main,
+      meta: {
+        requireAuth: true,
+        component: Main
+      }
+    },
+    {
+      path: '/introduce',
+      name: 'introduce',
+      component: Introduce
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    },
+    {
+      path: '/userCenter',
+      name: 'userCenter',
+      component: UserCenter,
+      meta: {
+        requireAuth: true
+      }
+    }
+  ]
 })

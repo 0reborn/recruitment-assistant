@@ -49,8 +49,8 @@
                <li @click="showDropdownMenu"
                   v-if="$store.state.isLogin"
                   class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle"
-                     href="#">
+                  <a @click.prevent="" class="nav-link dropdown-toggle"
+                     href="">
                      <i class="el-icon-user-solid"></i>
                      {{ $store.state.username }}
                   </a>
@@ -60,9 +60,9 @@
                      <a class="dropdown-item"
                         href="#">帮助</a>
                      <div class="dropdown-divider"></div>
-                     <a @click="logout"
+                     <a @click.prevent="logout"
                         class="dropdown-item"
-                        href="#">注销</a>
+                        href="">注销</a>
                   </div>
                </li>
                <li v-if="!$store.state.isLogin"
