@@ -295,7 +295,7 @@ export default {
                padding: 10px 8px;
                border: 1px solid #fff;
                border-top: none;
-               height: 105%;
+               height: 125%;
             }
          }
       }
