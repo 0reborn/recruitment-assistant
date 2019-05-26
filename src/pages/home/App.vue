@@ -8,7 +8,7 @@
       <EditFrame ref="editFrame"></EditFrame>
       <AddStatusFrame ref="addStatusFrame"></AddStatusFrame>
       <TipList ref="tipList"></TipList>
-      <AddTip></AddTip>
+      <AddTip ref="addTip"></AddTip>
       <router-view ref="main" v-if="isRouterAlive" v-cloak></router-view>
       <Footer></Footer>
     </div>

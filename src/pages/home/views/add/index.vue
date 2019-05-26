@@ -279,7 +279,7 @@ export default {
                      $('#addRecord').modal('hide')
                   }
                } else if (res.code == '400') {
-                  _this.showErrorMessage('登录失败，原因：' + res.error)
+                  _this.showErrorMessage('添加失败，原因：' + res.error)
                }
             }
          })
@@ -309,7 +309,7 @@ export default {
                   calendar.update()
                   $('#addRecord').modal('hide')
                } else if (res.code == '400') {
-                  _this.showErrorMessage('登录失败，原因：' + res.error)
+                  _this.showErrorMessage('添加失败，原因：' + res.error)
                }
             }
          })

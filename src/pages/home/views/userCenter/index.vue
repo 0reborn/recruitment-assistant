@@ -13,7 +13,11 @@
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">我的昵称</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control form-control-plaintext" v-model="this.$store.state.username">
+            <input
+              type="text"
+              class="form-control form-control-plaintext"
+              v-model="this.$store.state.username"
+            >
           </div>
         </div>
         <div class="form-group row">
@@ -56,12 +60,17 @@
           <a class="label">{{ record.company }}</a>
         </div>
         <div style="padding-left: 0" class="experiences col-10">
-          <div v-for="status in record.statuses" :key="status.sid">
+          <div v-for="state in record.status" :key="state.sid">
             <a
-              @click="status.tips.length != 0 ? showTipList(record.company, status) : showAddTip(status.sid)"
+              @click="state.tips.length != 0 ? showTipList(record.company, state) : showAddTip(state.sid)"
               class="experience label"
-              :class="{'label-active': status.tips.length != 0}"
-            >{{ status.name }}</a>
+              :class="{'label-active': state.tips.length != 0}"
+            >{{ state.name }}</a>
+          </div>
+          <div v-for="i in 1" :key="i">
+            <a @click="addStatus(record.rid)" class="experience label">
+              <i class="el-icon-plus"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -104,12 +113,34 @@ export default {
       this.$root.$children[0].$refs.tipList.show(company, status)
     },
     showAddTip(sid) {
-      console.log(sid)
-      $('#addTip').modal('show')
+      this.$root.$children[0].$refs.addTip.show(sid)
+    },
+    addStatus(rid) {
+      this.$root.$children[0].$refs.addStatusFrame.show(rid, 'userCenter')
+    },
+    update() {
+      var _this = this
+
+      $.ajax({
+        url: _this.$apiServer + 'getTips.php',
+        method: 'GET',
+        data: {
+          uid: _this.$store.state.userId
+        },
+        dataType: 'JSON',
+        success: function (res) {
+          if (res.code == '200') {
+            console.log(res.record)
+            _this.records = res.record
+          } else if (res.code == '400') {
+            _this.showErrorMessage('获取数据失败，原因：' + res.error)
+          }
+        }
+      })
     }
   },
   created() {
-    console.log(this.$store.state.userId)
+    this.update()
   },
   components: {
 

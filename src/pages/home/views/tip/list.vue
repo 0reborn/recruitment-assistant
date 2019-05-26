@@ -17,11 +17,11 @@
         </div>
         <div class="modal-body">
           <div v-for="(tip, index) in status.tips" :key="index">
-            <div :class="setClass(index)" role="alert">{{ tip }}</div>
+            <div v-if="tip" :class="setClass(index)" role="alert">{{ tip.tip }}</div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">添加新的经验</button>
+          <button @click="addTip(status.sid)" type="button" class="btn btn-primary" data-dismiss="modal">添加新的经验</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
         </div>
       </div>
@@ -37,6 +37,7 @@ export default {
       company: '',
       status: {
         'name': '',
+        'sid': '',
         'tips': []
       },
       alertClasses: [
@@ -59,6 +60,9 @@ export default {
       this.company = company
       this.status = status
       $('#tipList').modal('show')
+    },
+    addTip(sid) {
+      this.$root.$children[0].$refs.addTip.show(sid)
     }
   },
   created() { }
