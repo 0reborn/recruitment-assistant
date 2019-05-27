@@ -13,29 +13,36 @@
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">我的昵称</label>
           <div class="col-sm-11">
-            <input
-              type="text"
-              class="form-control form-control-plaintext"
-              v-model="this.$store.state.username"
-            >
+            <input type="text" class="form-control form-control-plaintext" v-model="username">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">我的邮箱</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control form-control-plaintext" value="xxx@qq.com">
+            <input
+              v-model="email"
+              type="text"
+              class="form-control form-control-plaintext"
+              value="xxx@qq.com"
+            >
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">我的手机</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control form-control-plaintext" value="130****1234">
+            <input
+              v-model="phone"
+              type="text"
+              class="form-control form-control-plaintext"
+              value="130****1234"
+            >
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">我的主页</label>
           <div class="col-sm-11">
             <input
+              v-model="homepage"
               type="text"
               class="form-control form-control-plaintext"
               value="xxx.yingpinzhushou.com"
@@ -45,7 +52,12 @@
         <div class="form-group row">
           <label class="col-sm-1 col-form-label">个人介绍</label>
           <div class="col-sm-11">
-            <input type="text" class="form-control form-control-plaintext" value="做个有趣的人">
+            <input
+              v-model="instruction"
+              type="text"
+              class="form-control form-control-plaintext"
+              value="做个有趣的人"
+            >
           </div>
         </div>
       </form>
@@ -82,30 +94,13 @@
 export default {
   data() {
     return {
-      records: [
-        {
-          rid: 18,
-          company: '阿里',
-          statuses: [
-            {
-              'sid': 0,
-              'name': '笔试',
-              'tips': ['tip1', 'tip2'],        //方案一
-            }
-          ]
-        },
-        {
-          rid: 19,
-          company: '腾讯',
-          statuses: [
-            {
-              'sid': 2,
-              'name': '面试',
-              'tips': [],        //方案一
-            }
-          ]
-        }
-      ]
+      records: [],
+      username: '',
+      email: '',
+      phone: '',
+      homepage: '',
+      instruction: '',
+      copy: null
     }
   },
   methods: {
@@ -137,6 +132,34 @@ export default {
           }
         }
       })
+
+      $.ajax({
+        url: _this.$apiServer + 'getUserinfo.php',
+        method: 'POST',
+        data: {
+          uid: _this.$store.state.userId
+        },
+        dataType: 'JSON',
+        success: function (res) {
+          if (res.code == '200') {
+            console.log(res)
+            _this.username = res.username
+            _this.email = res.email
+            _this.phone = res.phone
+            _this.homepage = res.homepage
+            _this.instruction = res.introduction ? res.introduction : '这个人比较懒，啥也没有写~'
+            _this.copy = {
+              username: _this.username,
+              email: _this.email,
+              phone: _this.phone,
+              homepage: _this.homepage,
+              instruction: _this.instruction
+            }
+          } else if (res.code == '400') {
+            _this.showErrorMessage('获取数据失败，原因：' + res.error)
+          }
+        }
+      })
     }
   },
   created() {
@@ -150,11 +173,17 @@ export default {
 
 <style lang="less">
 #userCenter {
+  @cancel-btn-primary: #f0f0f0;
+  @info-bg-plus-color: #361111;
   height: @main-div-height;
+  overflow-y: scroll;
   width: 80%;
   margin-left: 10%;
-  border: 1px solid red;
-  padding: 20px 25px;
+  padding: 20px 28px;
+  border-radius: 24px;
+  border: 1px solid @primary-bg-color + @info-bg-plus-color;
+  background-color: @primary-bg-color + @info-bg-plus-color;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
 
   .title {
     font-size: 160%;
@@ -170,7 +199,7 @@ export default {
     justify-content: space-between;
 
     .btn-cancel {
-      background-color: #e4e4e4;
+      background-color: @cancel-btn-primary;
       margin-right: 20px;
     }
 
@@ -184,7 +213,6 @@ export default {
   }
 
   .info-content {
-    padding-top: 10px;
     padding-bottom: 15px;
     .form-group {
       margin-bottom: 0rem;
@@ -217,7 +245,7 @@ export default {
       .company {
         display: flex;
         .label {
-          background-color: #007bff;
+          background-color: @confirm-btn-color;
         }
       }
 
@@ -225,7 +253,7 @@ export default {
         display: flex;
 
         .label {
-          background-color: #e4e4e4;
+          background-color: @cancel-btn-primary;
           color: #444;
           margin-right: 30px;
           transition: 0.4s;
@@ -236,16 +264,20 @@ export default {
         }
 
         .label-active {
-          background-color: #17a2b8;
+          background-color: @primary-btn-color;
           color: @primary-font-color;
           transition: 0.4s;
         }
 
         .label-active:hover {
-          background-color: #138496;
+          background-color: @primary-btn-hover-color;
         }
       }
     }
   }
+}
+
+#userCenter::-webkit-scrollbar {
+  display: none;
 }
 </style>

@@ -69,7 +69,31 @@ export default {
   height: 100vh;
   > .container-fluid {
     padding: 0 10px;
-    overflow: hidden;
+    // overflow: hidden;
+  }
+
+  .btn.btn-info {
+    color: @primary-font-color;
+    background-color: @primary-btn-color;
+    border-color: @primary-btn-color;
+  }
+
+  .btn-info:hover {
+    color: @primary-font-color;
+    background-color: @primary-btn-hover-color;
+    border-color: @primary-btn-hover-color;
+  }
+
+  .btn-primary {
+    color: @primary-font-color;
+    background-color: @confirm-btn-color;
+    border-color: @confirm-btn-color;
+  }
+
+  .btn-primary:hover {
+    color: @primary-font-color;
+    background-color: @confirm-btn-hover-color;
+    border-color: @confirm-btn-hover-color;
   }
 
   .modal-content {

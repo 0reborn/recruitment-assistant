@@ -139,7 +139,7 @@ export default {
             verifyCode: 0
          },
          isValid: true,
-         trueVerifyCode: '924086'
+         trueVerifyCode: null
       }
    },
 
@@ -198,7 +198,7 @@ export default {
             return
          }
 
-         var waitTime = 5
+         var waitTime = 10
          var suffixText = "s后重新发送"
          var $verifyCodeBtn = $('#verifyCodeBtn')
          this.isValid = false

@@ -239,11 +239,20 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 700px;
+
+    .wh_content_all {
+      background-color: @primary-btn-hover-color + #221122;
+      border-radius: 15px;
+    }
   }
 
   .wh_content_item {
     height: 60px;
     font-size: 17px;
+
+    .wh_item_date.wh_isToday {
+      background-color: #eee000;
+    }
   }
 
   .wh_item_date {
@@ -284,7 +293,7 @@ export default {
         // display: inline-block;
 
         .date-header {
-          border: 1px solid #fff;
+          border: 1px solid @primary-font-color;
           height: 35px;
           line-height: 35px;
           text-align: center;
@@ -292,7 +301,7 @@ export default {
 
         .date-event-box {
           padding: 10px 8px;
-          border: 1px solid #fff;
+          border: 1px solid @primary-font-color;
           border-top: none;
           height: 125%;
         }

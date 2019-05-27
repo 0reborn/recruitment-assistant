@@ -16,7 +16,7 @@
             <div class="method">{{ event.status.method }}</div>
           </div>
         </div>
-        <div class="info">
+        <div style="margin-top: 9px" class="info">
           <div class="left">
             <div>时间</div>
           </div>
@@ -102,23 +102,28 @@ export default {
 </script>
 
 <style lang="less">
-@event-label-color: #ffd000;
-@event-remainDayNum-bg-color: #f56c6c;
-@event-border-color: green;
-
-@event-info-font-size: 13.5px;
+@event-label-color: #00f600;
+@event-remainDayNum-bg-color: #f57d6c;
+@event-border-color: #616161;
+@event-method-color: #979797;
+@event-label-border-radius: 4px;
+@event-label-padding-vertical: 0px;
+@event-label-padding-horizon: 4px;
+@event-info-font-size: 15.5px;
 
 .day_event {
   margin-bottom: 15px;
   border: 1px solid @event-border-color;
   height: unset;
+  border-radius: 3px;
 
   .header {
     border-bottom: 1px solid @event-border-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 5px;
+    padding: 5px 6.5px;
+    overflow: hidden;
 
     > div {
       height: 20px;
@@ -130,20 +135,21 @@ export default {
       height: 14px;
       width: 14px;
       border-radius: 50%;
-      background-color: @event-label-color;
+      // background-color: @event-label-color;
+      background-color: @event-method-color;
     }
 
     .remainDayNum {
       background-color: @event-remainDayNum-bg-color;
-      border-radius: 2px;
-      padding: 0 2px;
+      border-radius: @event-label-border-radius;
+      padding: @event-label-padding-vertical @event-label-padding-horizon;
       font-size: 13px;
     }
   }
 
   .main {
     font-size: @event-info-font-size;
-    padding: 6px 15px;
+    padding: 6px 12px;
     padding-top: 2px;
 
     .statusInfo {
@@ -164,27 +170,34 @@ export default {
           font-size: (@event-info-font-size - 1px);
 
           .time {
-            background-color: #ccc000;
-            border-radius: 2px;
-            padding: 0 2px;
+            // background-color: #d4d400;
+            background-color: (@primary-bg-color + @primary-btn-color * 2) / 3;
+
+            border-radius: @event-label-border-radius;
+            padding: @event-label-padding-vertical @event-label-padding-horizon;
           }
 
           .date {
             margin-right: 15px;
-            background-color: #00aa00;
-            border-radius: 2px;
-            padding: 0 2px;
+            // background-color: #33e033;
+            background-color: (@primary-bg-color + @primary-btn-color * 2) / 3;
+
+            border-radius: @event-label-border-radius;
+            padding: @event-label-padding-vertical @event-label-padding-horizon;
           }
 
           .method {
-            background-color: #666;
-            border-radius: 2px;
-            padding: 0 2px;
+            // background-color: @event-method-color;
+            background-color: (@primary-bg-color + @primary-btn-color * 2) / 3;
+
+            border-radius: @event-label-border-radius;
+            padding: @event-label-padding-vertical @event-label-padding-horizon;
           }
 
           .address {
             max-width: 100%;
             overflow-x: scroll;
+            font-size: @event-info-font-size;
           }
 
           .address::-webkit-scrollbar {
