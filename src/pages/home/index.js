@@ -7,8 +7,8 @@ import '@/plugins/element.js'
 
 Vue.config.productionTip = false
 
-// Vue.prototype.$apiServer = "https://cstdio.cn/yingpin/"
-Vue.prototype.$apiServer = "http://111.230.250.176/yingpin/"
+Vue.prototype.$apiServer = "https://dist.cstdio.cn/yingpin/"
+// Vue.prototype.$apiServer = "http://111.230.250.176/yingpin/"
 
 Vue.prototype.showSuccessMessage = (message) => {
   Vue.prototype.$message({

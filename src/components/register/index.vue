@@ -220,7 +220,7 @@ export default {
             dataType: 'JSON',
             success: function (res) {
                if (res.code == '200') {
-                  // _this.trueVerifyCode = res.verify
+                  _this.trueVerifyCode = res.verify
                   _this.showSuccessMessage('验证码已发送')
                } else if (res.code == '400') {
                   _this.showErrorMessage(res.error)
@@ -251,6 +251,7 @@ export default {
                },
                dataType: 'JSON',
                success: function (res) {
+                  console.log(res)
                   if (res.code == '200') {
                      _this.showSuccessMessage('注册成功')
                      $('#register').modal('hide')

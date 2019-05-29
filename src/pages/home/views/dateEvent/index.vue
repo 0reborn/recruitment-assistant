@@ -109,7 +109,7 @@ export default {
 @event-label-border-radius: 4px;
 @event-label-padding-vertical: 0px;
 @event-label-padding-horizon: 4px;
-@event-info-font-size: 15.5px;
+@event-info-font-size: 14.5px;
 
 .day_event {
   margin-bottom: 15px;
